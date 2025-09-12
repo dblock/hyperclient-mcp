@@ -1,0 +1,9 @@
+.DS_Store
+.bundle
+.env
+.idea
+.ruby-version
+.tool-versions
+.vscode
+Gemfile.lock
+pkg

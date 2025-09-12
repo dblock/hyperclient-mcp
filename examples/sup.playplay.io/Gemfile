@@ -1,0 +1,6 @@
+source 'http://rubygems.org'
+
+gem 'hyperclient-mcp', path: '../..'
+gem 'puma'
+gem 'rackup'
+gem 'sinatra'

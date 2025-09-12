@@ -1,0 +1,33 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://example.org/api
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/hal+json
+      Accept:
+      - application/hal+json,application/json
+      User-Agent:
+      - Faraday v2.13.4
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Vary:
+      - Origin
+      Content-Length:
+      - '281'
+    body:
+      encoding: UTF-8
+      string: '{"_links":{"self":{"href":"http://example.org/api"},"swagger_doc":{"href":"http://example.org/api/swagger_doc"},"splines":{"href":"http://example.org/api/splines{?page,size}","templated":true},"spline":{"href":"http://example.org/api/splines/{uuid}","templated":true}}}'
+  recorded_at: Fri, 12 Sep 2025 15:05:49 GMT
+recorded_with: VCR 6.3.1
