@@ -35,7 +35,39 @@ end
 
 ### Use Hyperclient MCP
 
-To turn any hypermedia API into an MCP, create an mcp wrapper and register its `resources` with FastMcp and mount it as usual.
+#### Command Line
+
+Start the Hyperclient MCP server for any existing API using the convenient command-line proxy.
+
+```bash
+hyperclient-mcp --api https://sup2.playplay.io/api --header X-Access-Token=#$TOKEN start
+```
+
+Register with Claude.
+
+```bash
+claude mcp add --transport sse local http://127.0.0.1:9292/mcp/sse
+```
+
+Check that it was registered.
+
+```bash
+$ claude mcp list
+Checking MCP server health...
+local: http://127.0.0.1:9292/mcp/sse (SSE) - ✓ Connected
+```
+
+Run Claude, try asking a question.
+
+```bash
+$ claude "use the local mcp to find the name of the team with ID 64124ac95d758400015faecf"
+
+The team name is dblock.
+```
+
+#### Programmatically
+
+To turn any hypermedia API into an MCP in code, create an mcp wrapper and register its `resources` with FastMcp and mount it as usual.
 
 ```ruby
 hyperclient_mcp = Hyperclient::Mcp::Api.new(api)
@@ -46,9 +78,7 @@ mcp_server.register_resources(*hyperclient_mcp.resources)
 use FastMcp::Transports::RackTransport, mcp_server
 ```
 
-### See It
-
-The MCP code in [examples/sup.playplay.io](examples/sup.playplay.io/) can be directly used with Claude.
+For example, the MCP code in [examples/sup.playplay.io](examples/sup.playplay.io/) starts an MCP server using code similar to above, and can be directly used with Claude.
 
 ```bash
 bundle install
@@ -61,9 +91,9 @@ claude mcp add --transport sse local http://127.0.0.1:4567/mcp/sse
 
 ![](examples/sup.playplay.io/mcp.gif)
 
-## Examples
+## More Examples
 
-See [examples/grape-with-roar](examples/grape-with-roar/) for a complete example.
+See [examples/grape-with-roar](examples/grape-with-roar/) for a complete example that uses the [grape-with-roar demo project](https://github.com/ruby-grape/grape-with-roar).
 
 ## Upgrading
 

@@ -18,6 +18,9 @@ Gem::Specification.new do |s|
   s.licenses = ['MIT']
   s.summary = 'Turn any Hypermedia api into an mcp server.'
   s.add_dependency 'fast-mcp'
+  s.add_dependency 'gli'
   s.add_dependency 'hyperclient'
+  s.add_dependency 'puma'
+  s.add_dependency 'sinatra'
   s.metadata['rubygems_mfa_required'] = 'true'
 end

@@ -1,0 +1,59 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://sup2.playplay.io/api
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/hal+json
+      Accept:
+      - application/hal+json,application/json
+      X-Access-Token:
+      - "<TOKEN>"
+      User-agent:
+      - HyperclientMCP/1.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Wed, 17 Sep 2025 14:38:27 GMT
+      content-type:
+      - application/json
+      transfer-encoding:
+      - chunked
+      connection:
+      - keep-alive
+      content-encoding:
+      - gzip
+      vary:
+      - Origin, Accept-Encoding
+      x-do-app-origin:
+      - d1ebecaf-ff7f-4a6e-8d2f-15fa29ef5ed4
+      cache-control:
+      - private
+      x-do-orig-status:
+      - '200'
+      last-modified:
+      - Wed, 17 Sep 2025 14:38:27 GMT
+      cf-cache-status:
+      - MISS
+      set-cookie:
+      - __cf_bm=8X.o_dxwABqUssohzl5EaxDlVf1vVaEdsLmLmu_S0R4-1758119907-1.0.1.1-w4zGV.nYuqup_n6IucN9AirI9Aw9voFfVJ_0BJ.nZ1xSzEvYDBbp67uCfPOnVpY7PzPrBpn0iYR.KMzziLug6pbtdoYo6acHd9zU0HtGL08;
+        path=/; expires=Wed, 17-Sep-25 15:08:27 GMT; domain=.sup2.playplay.io; HttpOnly;
+        Secure; SameSite=None
+      server:
+      - cloudflare
+      cf-ray:
+      - 980958eb288725d8-EWR
+      alt-svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_links":{"self":{"href":"https://sup2.playplay.io/api"},"status":{"href":"https://sup2.playplay.io/api/status"},"subscriptions":{"href":"https://sup2.playplay.io/api/subscriptions"},"credit_cards":{"href":"https://sup2.playplay.io/api/credit_cards"},"teams":{"href":"https://sup2.playplay.io/api/teams/{?cursor,size,sort,offset,total_count,active}","templated":true},"channels":{"href":"https://sup2.playplay.io/api/channels/{?cursor,size,sort,offset,total_count,team_id}","templated":true},"users":{"href":"https://sup2.playplay.io/api/users/{?cursor,size,sort,offset,total_count,channel_id}","templated":true},"rounds":{"href":"https://sup2.playplay.io/api/rounds/{?cursor,size,sort,offset,total_count,channel_id}","templated":true},"sups":{"href":"https://sup2.playplay.io/api/sups/{?cursor,size,sort,offset,total_count,round_id}","templated":true},"stats":{"href":"https://sup2.playplay.io/api/stats/{?round_id,channel_id,team_id}","templated":true},"user":{"href":"https://sup2.playplay.io/api/users/{id}","templated":true},"channel":{"href":"https://sup2.playplay.io/api/channels/{id}","templated":true},"team":{"href":"https://sup2.playplay.io/api/teams/{id}","templated":true},"round":{"href":"https://sup2.playplay.io/api/rounds/{id}","templated":true},"sup":{"href":"https://sup2.playplay.io/api/sups/{id}","templated":true},"data":{"href":"https://sup2.playplay.io/api/data/{id}","templated":true}}}'
+  recorded_at: Wed, 17 Sep 2025 14:38:27 GMT
+recorded_with: VCR 6.3.1

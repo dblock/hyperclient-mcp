@@ -1,0 +1,65 @@
+#!/usr/bin/env ruby
+require 'gli'
+require 'hyperclient-mcp'
+
+module Hyperclient
+  module Mcp
+    module Cli
+      class App
+        extend GLI::App
+
+        version Hyperclient::Mcp::VERSION
+
+        arguments :strict
+        subcommand_option_handling :normal
+
+        program_desc 'Hypermedia API MCP Server.'
+
+        default_command :help
+
+        flag ['api'], desc: 'API endpoint.', type: String, must_match: /\A#{URI::DEFAULT_PARSER.make_regexp}\z/
+        flag %w[h header], desc: 'Additional HTTP request header(s).', multiple: true
+        flag ['vcr-cassette-name'], desc: 'Offline VCR cassette.'
+
+        commands_from File.expand_path('commands', __dir__)
+
+        pre do |global_options, _command, options, _args|
+          # Offline VCR cassette
+          if global_options['vcr-cassette-name']
+            require 'vcr'
+            VCR.configure do |config|
+              config.cassette_library_dir = File.expand_path('../spec/fixtures', __dir__)
+              config.default_cassette_options = { record: :new_episodes }
+              config.hook_into :faraday
+              # config.debug_logger = $stderr
+              config.filter_sensitive_data('<TOKEN>') do
+                ENV.fetch('TOKEN', nil)
+              end
+            end
+            VCR.insert_cassette global_options['vcr-cassette-name']
+          end
+
+          # remove any nil values from options
+          options.compact!
+
+          api = Hyperclient.new(global_options['api']) do |client|
+            global_options['header']&.each do |header|
+              k, v = header.split('=', 2)
+              client.headers[k] = v
+            end
+          end
+
+          global_options['mcp'] = Hyperclient::Mcp::Api.new(api)
+
+          true
+        end
+
+        post do |global_options, _command, _options, _args|
+          VCR.eject_cassette if global_options['vcr-cassette-name']
+        end
+      end
+    end
+  end
+end
+
+exit Hyperclient::Mcp::Cli::App.run(ARGV)
