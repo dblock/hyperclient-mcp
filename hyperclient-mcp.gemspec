@@ -6,6 +6,7 @@ require 'hyperclient-mcp/version'
 Gem::Specification.new do |s|
   s.name = 'hyperclient-mcp'
   s.bindir = 'bin'
+  s.executables << 'hyperclient-mcp'
   s.version = Hyperclient::Mcp::VERSION
   s.authors = ['Daniel Doubrovkine']
   s.email = 'dblock@dblock.org'

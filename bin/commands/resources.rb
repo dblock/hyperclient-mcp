@@ -5,8 +5,8 @@ module Hyperclient
     module Cli
       class App
         desc 'List resources.'
-        command 'resources' do |g|
-          g.action do |global, _options, _args|
+        command 'resources' do |command|
+          command.action do |global, _options, _args|
             global['mcp'].resources.each do |resource|
               puts resource
             end
