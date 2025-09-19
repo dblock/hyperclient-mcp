@@ -40,7 +40,7 @@ end
 Start the Hyperclient MCP server for any existing API using the convenient command-line proxy.
 
 ```bash
-hyperclient-mcp --api https://sup2.playplay.io/api --header X-Access-Token=#$TOKEN start
+hyperclient-mcp --api https://sup2.playplay.io/api --header X-Access-Token=$TOKEN start
 ```
 
 Register with Claude.

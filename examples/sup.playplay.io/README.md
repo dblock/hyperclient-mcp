@@ -32,7 +32,16 @@ curl --silent -H "X-Access-Token:$TOKEN" https://sup2.playplay.io/api/teams/1234
 }
 ```
 
-Let's do this via an mcp.
+Try this.
+
+```bash
+bundle exec ruby hal.rb
+
+Bot is away.
+Team name is dblock.
+```
+
+Now, let's do this via mcp.
 
 ```bash
 bundle install
